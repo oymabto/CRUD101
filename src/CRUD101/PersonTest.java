@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class PersonTest {
     public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
         Person Paul = new Person("Paul");
         Person Emma = new Person("Emma");
         Person Peter = new Person("Peter");
@@ -49,8 +52,8 @@ public class PersonTest {
 
         Paul.setPhoneNumber(1, 514, 546, 9876);
         Emma.setPhoneNumber(1, 514, 278, 2389);
-        Peter.setPhoneNumber(1, 212, 880, 7654);
-        Lisa.setPhoneNumber(1, 514, 123, 1089);
+        Peter.setPhoneNumber(1, 514, 880, 7654);
+        Lisa.setPhoneNumber(1, 212, 123, 1089);
         James.setPhoneNumber(1, 438, 947, 8181);
         Robert.setPhoneNumber(1, 514, 234, 9000);
         Mary.setPhoneNumber(1, 438, 312, 9338);
@@ -91,18 +94,81 @@ public class PersonTest {
         allPersons.add(Austin);
         allPersons.add(Carol);
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Which area code are you looking for?\n");
-        int areaCodeNumber = input.nextInt();
+
+        System.out.println("\nSearch for?\n");
+        System.out.println("1-Area code\n" + "2-Street name\n" + "3-Zip code\n");
+        int number = input.nextInt();
+
+        System.out.println("\nReturn:\n");
+        System.out.println("1-Person\n" + "2-Full Address\n" + "3-Phone number\n");
+        int answer = input.nextInt();
 
         int count = 0;
-        for (int i = 0; i < allPersons.size(); i++) {
-            if (allPersons.get(i).getPhoneNumber().getAreaCode() == areaCodeNumber) {
-                System.out.print("\n" + i + ": ");
-                System.out.println(allPersons.get(i));
-                count++;
+
+        if (number == 1) {
+            System.out.println("Please enter the area code: \n");
+            int areaCodeNumber = input.nextInt();
+
+            for (Person allPerson : allPersons) {
+                if (allPerson.getPhoneNumber().getAreaCode() == areaCodeNumber) {
+                    count++;
+                    System.out.print("\n" + count + ": ");
+                    if (answer == 1) {
+                        System.out.println(allPerson.getName());
+                    } else if (answer == 2) {
+                        System.out.println(allPerson.getAddress());
+                    } else if (answer == 3) {
+                        System.out.println(allPerson.getPhoneNumber());
+                    } else {
+                        System.out.println("Please enter a number between 1 and 3.");
+                    }
+                }
             }
+            System.out.println("\nThere are " + count + " persons with " + areaCodeNumber + " area code.");
+        } else if (number == 2) {
+            System.out.println("Please enter the street name: \n");
+            String street = input.next();
+
+            for (int i = 0; i < allPersons.size(); i++) {
+                System.out.println(allPersons.get(i).getAddress().getStreetName());
+                if (allPersons.get(i).getAddress().getStreetName().equals(street)) {
+                    count++;
+                    System.out.print("\n" + count + ": ");
+                    if (answer == 1) {
+                        System.out.println(allPersons.get(i).getName());
+                    } else if (answer == 2) {
+                        System.out.println(allPersons.get(i).getAddress());
+                    } else if (answer == 3) {
+                        System.out.println(allPersons.get(i).getPhoneNumber());
+                    } else {
+                        System.out.println("Please enter a number between 1 and 3.");
+                    }
+                }
+            }
+            System.out.println("\nThere are " + count + " persons with " + street + " street name.");
+        } else if (number == 3) {
+            System.out.println("Please enter the street name: \n");
+            String addressZipCode = input.next();
+
+            for (int i = 0; i < allPersons.size(); i++) {
+                if (allPersons.get(i).getAddress().getZipCode().equals(addressZipCode)) {
+                    count++;
+                    System.out.print("\n" + count + ": ");
+                    if (answer == 1) {
+                        System.out.println(allPersons.get(i).getName());
+                    } else if (answer == 2) {
+                        System.out.println(allPersons.get(i).getAddress());
+                    } else if (answer == 3) {
+                        System.out.println(allPersons.get(i).getPhoneNumber());
+                    } else {
+                        System.out.println("Please enter a number between 1 and 3.");
+                    }
+                }
+            }
+            System.out.println("\nThere are " + count + " persons live in an address with " + addressZipCode + " zip code.");
         }
-        System.out.println("\nThere are " + count + " phone numbers with " + areaCodeNumber + "area code.");
+        else {
+            System.out.println("Please enter a number between 1 and 3.");
+        }
     }
 }

@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class AddressTest {
     public static void main(String[] args) {
 
-
     Address paulAddress = new Address(5890, "Notre-Dame", "Apartment", 263, "Montreal", "QC", "CANADA", "H2Y 1B5");
     Address emmaAddress = new Address(456, "Sherbrooke St.", "Apartment", 238, "Montreal", "QC", "CANADA", "H3A 3G4");
     Address peterAddress = new Address(17, "Sainte-Catherine St.", "Apartment", 203, "Montreal", "QC", "CANADA", "H2Y 3X4");
