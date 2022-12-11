@@ -133,7 +133,7 @@ public class PersonTest {
                 System.out.println(allPersons.get(i).getAddress().getStreetName());
                 if (allPersons.get(i).getAddress().getStreetName().equals(street)) {
                     count++;
-                    System.out.print("\n" + count + ": ");
+                    System.out.print("\n" + count + ":  ");
                     if (answer == 1) {
                         System.out.println(allPersons.get(i).getName());
                     } else if (answer == 2) {
