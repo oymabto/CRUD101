@@ -39,4 +39,11 @@ public class Person {
     public void setPhoneNumber(int countryCode, int areaCode, int phonePrefix, int lineNumber) {
         this.phoneNumber = new Phone(countryCode, areaCode, phonePrefix, lineNumber);
     }
+
+    @Override
+    public String toString() {
+        return "\n" + "        Name: " + name +
+                "\nPhone Number: " + phoneNumber +
+                "\n     Address: " + address;
+    }
 }

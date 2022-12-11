@@ -102,12 +102,12 @@ public class Address {
     public String toString() {
         return streetNumber +
                 ", " + streetName + "\n" +
-                 buildingType +
+                "              " + buildingType +
                 ", # " + apartmentNumber + "\n" +
-                 cityName +
+                "              " + cityName +
                 ", " + stateName +
                 ", " + countryName + "\n" +
-                 zipCode;
+                "              " + zipCode;
     }
 }
 
