@@ -18,6 +18,39 @@ public class Phone {
     }
 
     //getter and setter
+
+    public int getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(int countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public int getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(int areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    public int getPhonePrefix() {
+        return phonePrefix;
+    }
+
+    public void setPhonePrefix(int phonePrefix) {
+        this.phonePrefix = phonePrefix;
+    }
+
+    public int getLineNumber() {
+        return lineNumber;
+    }
+
+    public void setLineNumber(int lineNumber) {
+        this.lineNumber = lineNumber;
+    }
+
     public String getPhoneNumber() {
         return countryCode + "" + areaCode + "" + phonePrefix + "" + lineNumber;
     }

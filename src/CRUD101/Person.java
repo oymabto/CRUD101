@@ -6,5 +6,37 @@ public class Person {
     private String name;
     private Address address;
     private Phone phoneNumber;
-    private ArrayList<Person> kids = new ArrayList<>();
+
+    public Person(String name){
+        this.name = name;
+    }
+    public Person(String name, Address address, Phone phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(int newStreetNumber, String newStreetName, String newBuildingType, int newApartmentNumber, String newCityName, String newStateName, String newCountryName, String newZipCode) {
+        this.address = new Address(newStreetNumber, newStreetName, newBuildingType, newApartmentNumber, newCityName, newStateName, newCountryName, newZipCode);
+    }
+
+    public Phone getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int countryCode, int areaCode, int phonePrefix, int lineNumber) {
+        this.phoneNumber = new Phone(countryCode, areaCode, phonePrefix, lineNumber);
+    }
 }
