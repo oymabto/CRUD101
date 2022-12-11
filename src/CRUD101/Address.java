@@ -10,6 +10,8 @@ public class Address {
     private String countryName;
     private String zipCode;
 
+    private Address address;
+
     //constructor
     public Address() {
     }
@@ -95,16 +97,17 @@ public class Address {
         return this.streetNumber + "" + this.streetName + "" + this.apartmentNumber + "" + this.cityName + "" + this.stateName + "" + this.countryName + "" + this.zipCode;
     }
 
+
     @Override
     public String toString() {
         return streetNumber +
                 ", " + streetName + "\n" +
-                "              " + buildingType +
+                 buildingType +
                 ", # " + apartmentNumber + "\n" +
-                "              " + cityName +
+                 cityName +
                 ", " + stateName +
                 ", " + countryName + "\n" +
-                "              " + zipCode;
+                 zipCode;
     }
 }
 
