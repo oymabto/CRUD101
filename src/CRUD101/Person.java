@@ -7,6 +7,9 @@ public class Person {
     private Address address;
     private Phone phoneNumber;
 
+    public Person(){
+    }
+
     public Person(String name){
         this.name = name;
     }
@@ -42,8 +45,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "\n" + "        Name: " + name +
-                "\nPhone Number: " + phoneNumber +
-                "\n     Address: " + address;
+        return name;
     }
 }

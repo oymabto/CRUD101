@@ -54,6 +54,7 @@ public class AddressTest {
         System.out.println("Which street name are you looking for?\n");
         String street = input.nextLine();
 
+
     int count =0;
     for (int i = 0; i < allAddresses.size(); i++){
         if (allAddresses.get(i).getStreetName().equals (street)){

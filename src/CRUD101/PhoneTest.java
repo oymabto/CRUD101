@@ -61,7 +61,7 @@ public class PhoneTest {
                 count++;
             }
         }
-        System.out.println("\nThere are " + count + " phone numbers with " + areaCodeNumber + "area code.");
+        System.out.println("\nThere are " + count + " phone numbers with " + areaCodeNumber + " area code.");
     }
 
 }
