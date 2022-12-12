@@ -43,6 +43,14 @@ public class Person {
         this.phoneNumber = new Phone(countryCode, areaCode, phonePrefix, lineNumber);
     }
 
+    public void setPhoneNumber(Phone phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return name;

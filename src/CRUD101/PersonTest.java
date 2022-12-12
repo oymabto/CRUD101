@@ -128,17 +128,17 @@ public class PersonTest {
             System.out.println("Please enter the street name: \n");
             String street = input.next();
 
-            for (int i = 0; i < allPersons.size(); i++) {
+            for (Person allPerson : allPersons) {
 
-                if (allPersons.get(i).getAddress().getStreetName().equals(street)) {
+                if (allPerson.getAddress().getStreetName().equals(street)) {
                     count++;
                     System.out.print("\n" + count + ":  ");
                     if (answer == 1) {
-                        System.out.println(allPersons.get(i).getName());
+                        System.out.println(allPerson.getName());
                     } else if (answer == 2) {
-                        System.out.println(allPersons.get(i).getAddress());
+                        System.out.println(allPerson.getAddress());
                     } else if (answer == 3) {
-                        System.out.println(allPersons.get(i).getPhoneNumber());
+                        System.out.println(allPerson.getPhoneNumber());
                     } else {
                         System.out.println("Please enter a number between 1 and 3.");
                     }
@@ -149,16 +149,16 @@ public class PersonTest {
             System.out.println("Please enter the street name: \n");
             String addressZipCode = input.next();
 
-            for (int i = 0; i < allPersons.size(); i++) {
-                if (allPersons.get(i).getAddress().getZipCode().equals(addressZipCode)) {
+            for (Person allPerson : allPersons) {
+                if (allPerson.getAddress().getZipCode().equals(addressZipCode)) {
                     count++;
                     System.out.print("\n" + count + ": ");
                     if (answer == 1) {
-                        System.out.println(allPersons.get(i).getName());
+                        System.out.println(allPerson.getName());
                     } else if (answer == 2) {
-                        System.out.println(allPersons.get(i).getAddress());
+                        System.out.println(allPerson.getAddress());
                     } else if (answer == 3) {
-                        System.out.println(allPersons.get(i).getPhoneNumber());
+                        System.out.println(allPerson.getPhoneNumber());
                     } else {
                         System.out.println("Please enter a number between 1 and 3.");
                     }

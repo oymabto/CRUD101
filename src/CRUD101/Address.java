@@ -100,7 +100,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return streetNumber +
+        return "          " +streetNumber +
                 ", " + streetName + "\n" +
                 "              " + buildingType +
                 ", # " + apartmentNumber + "\n" +
