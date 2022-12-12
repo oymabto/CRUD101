@@ -10,8 +10,6 @@ public class Address {
     private String countryName;
     private String zipCode;
 
-    private Address address;
-
     //constructor
     public Address() {
     }

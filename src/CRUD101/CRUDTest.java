@@ -31,26 +31,7 @@ public class CRUDTest {
 
         ArrayList<Person> allPersons = new ArrayList<>();
 
-        allPersons.add(Paul);
-        allPersons.add(Emma);
-        allPersons.add(Peter);
-        allPersons.add(Lisa);
-        allPersons.add(James);
-        allPersons.add(Robert);
-        allPersons.add(Mary);
-        allPersons.add(Kevin);
-        allPersons.add(Michelle);
-        allPersons.add(Stephanie);
-        allPersons.add(William);
-        allPersons.add(Ashley);
-        allPersons.add(Susan);
-        allPersons.add(Roger);
-        allPersons.add(Sarah);
-        allPersons.add(Jesse);
-        allPersons.add(Bruce);
-        allPersons.add(Nancy);
-        allPersons.add(Austin);
-        allPersons.add(Carol);
+        addingPersonsToTheArrayList(Paul, Emma, Peter, Lisa, James, Robert, Mary, Kevin, Michelle, Stephanie, William, Ashley, Susan, Roger, Sarah, Jesse, Bruce, Nancy, Austin, Carol, allPersons);
 
         Address paulAddress = new Address(5890, "Notre-Dame", "Apartment", 263, "Montreal", "QC", "CANADA", "H2Y 1B5");
         Address emmaAddress = new Address(456, "Sherbrooke", "Apartment", 238, "Montreal", "QC", "CANADA", "H3A 3G4");
@@ -75,26 +56,7 @@ public class CRUDTest {
 
         ArrayList <Address> allAddresses = new ArrayList<>();
 
-        allAddresses.add(paulAddress);
-        allAddresses.add(emmaAddress);
-        allAddresses.add(peterAddress);
-        allAddresses.add(lisaAddress);
-        allAddresses.add(jamesAddress);
-        allAddresses.add(robertAddress);
-        allAddresses.add(maryAddress);
-        allAddresses.add(kevinAddress);
-        allAddresses.add(michelleAddress);
-        allAddresses.add(stephanieAddress);
-        allAddresses.add(williamAddress);
-        allAddresses.add(ashleyAddress);
-        allAddresses.add(susanAddress);
-        allAddresses.add(rogerAddress);
-        allAddresses.add(sarahAddress);
-        allAddresses.add(jesseAddress);
-        allAddresses.add(bruceAddress);
-        allAddresses.add(nancyAddress);
-        allAddresses.add(austinAddress);
-        allAddresses.add(carolAddress);
+        addingAddresses(paulAddress, emmaAddress, peterAddress, lisaAddress, jamesAddress, robertAddress, maryAddress, kevinAddress, michelleAddress, stephanieAddress, williamAddress, ashleyAddress, susanAddress, rogerAddress, sarahAddress, jesseAddress, bruceAddress, nancyAddress, austinAddress, carolAddress, allAddresses);
 
         Phone paulPhone = new Phone(1, 514, 546, 9876);
         Phone emmaPhone = new Phone(1, 514, 278, 2389);
@@ -119,31 +81,9 @@ public class CRUDTest {
 
         ArrayList<Phone> allPhones = new ArrayList<>();
 
-        allPhones.add(paulPhone);
-        allPhones.add(emmaPhone);
-        allPhones.add(peterPhone);
-        allPhones.add(lisaPhone);
-        allPhones.add(jamesPhone);
-        allPhones.add(robertPhone);
-        allPhones.add(maryPhone);
-        allPhones.add(kevinPhone);
-        allPhones.add(michellePhone);
-        allPhones.add(stephaniePhone);
-        allPhones.add(williamPhone);
-        allPhones.add(ashleyPhone);
-        allPhones.add(susanPhone);
-        allPhones.add(rogerPhone);
-        allPhones.add(sarahPhone);
-        allPhones.add(jessePhone);
-        allPhones.add(brucePhone);
-        allPhones.add(nancyPhone);
-        allPhones.add(austinPhone);
-        allPhones.add(carolPhone);
+        addingPhoneNumbers(paulPhone, emmaPhone, peterPhone, lisaPhone, jamesPhone, robertPhone, maryPhone, kevinPhone, michellePhone, stephaniePhone, williamPhone, ashleyPhone, susanPhone, rogerPhone, sarahPhone, jessePhone, brucePhone, nancyPhone, austinPhone, carolPhone, allPhones);
 
-        for (int j = 0; j < allPersons.size(); j++) {
-            allPersons.get(j).setPhoneNumber(allPhones.get(j));
-            allPersons.get(j).setAddress(allAddresses.get(j));
-        }
+        passingPhoneNumberAndAddressToPerson(allPersons, allAddresses, allPhones);
 
         System.out.println("\nSearch for?\n");
         System.out.println("1-Area code\n" + "2-Street name\n" + "3-Zip code\n");
@@ -220,5 +160,81 @@ public class CRUDTest {
         else {
             System.out.println("Please enter a number between 1 and 3.");
         }
+    }
+
+    private static void passingPhoneNumberAndAddressToPerson(ArrayList<Person> allPersons, ArrayList<Address> allAddresses, ArrayList<Phone> allPhones) {
+        for (int j = 0; j < allPersons.size(); j++) {
+            allPersons.get(j).setPhoneNumber(allPhones.get(j));
+            allPersons.get(j).setAddress(allAddresses.get(j));
+        }
+    }
+
+    private static void addingPhoneNumbers(Phone paulPhone, Phone emmaPhone, Phone peterPhone, Phone lisaPhone, Phone jamesPhone, Phone robertPhone, Phone maryPhone, Phone kevinPhone, Phone michellePhone, Phone stephaniePhone, Phone williamPhone, Phone ashleyPhone, Phone susanPhone, Phone rogerPhone, Phone sarahPhone, Phone jessePhone, Phone brucePhone, Phone nancyPhone, Phone austinPhone, Phone carolPhone, ArrayList<Phone> allPhones) {
+        allPhones.add(paulPhone);
+        allPhones.add(emmaPhone);
+        allPhones.add(peterPhone);
+        allPhones.add(lisaPhone);
+        allPhones.add(jamesPhone);
+        allPhones.add(robertPhone);
+        allPhones.add(maryPhone);
+        allPhones.add(kevinPhone);
+        allPhones.add(michellePhone);
+        allPhones.add(stephaniePhone);
+        allPhones.add(williamPhone);
+        allPhones.add(ashleyPhone);
+        allPhones.add(susanPhone);
+        allPhones.add(rogerPhone);
+        allPhones.add(sarahPhone);
+        allPhones.add(jessePhone);
+        allPhones.add(brucePhone);
+        allPhones.add(nancyPhone);
+        allPhones.add(austinPhone);
+        allPhones.add(carolPhone);
+    }
+
+    private static void addingAddresses(Address paulAddress, Address emmaAddress, Address peterAddress, Address lisaAddress, Address jamesAddress, Address robertAddress, Address maryAddress, Address kevinAddress, Address michelleAddress, Address stephanieAddress, Address williamAddress, Address ashleyAddress, Address susanAddress, Address rogerAddress, Address sarahAddress, Address jesseAddress, Address bruceAddress, Address nancyAddress, Address austinAddress, Address carolAddress, ArrayList<Address> allAddresses) {
+        allAddresses.add(paulAddress);
+        allAddresses.add(emmaAddress);
+        allAddresses.add(peterAddress);
+        allAddresses.add(lisaAddress);
+        allAddresses.add(jamesAddress);
+        allAddresses.add(robertAddress);
+        allAddresses.add(maryAddress);
+        allAddresses.add(kevinAddress);
+        allAddresses.add(michelleAddress);
+        allAddresses.add(stephanieAddress);
+        allAddresses.add(williamAddress);
+        allAddresses.add(ashleyAddress);
+        allAddresses.add(susanAddress);
+        allAddresses.add(rogerAddress);
+        allAddresses.add(sarahAddress);
+        allAddresses.add(jesseAddress);
+        allAddresses.add(bruceAddress);
+        allAddresses.add(nancyAddress);
+        allAddresses.add(austinAddress);
+        allAddresses.add(carolAddress);
+    }
+
+    private static void addingPersonsToTheArrayList(Person Paul, Person Emma, Person Peter, Person Lisa, Person James, Person Robert, Person Mary, Person Kevin, Person Michelle, Person Stephanie, Person William, Person Ashley, Person Susan, Person Roger, Person Sarah, Person Jesse, Person Bruce, Person Nancy, Person Austin, Person Carol, ArrayList<Person> allPersons) {
+        allPersons.add(Paul);
+        allPersons.add(Emma);
+        allPersons.add(Peter);
+        allPersons.add(Lisa);
+        allPersons.add(James);
+        allPersons.add(Robert);
+        allPersons.add(Mary);
+        allPersons.add(Kevin);
+        allPersons.add(Michelle);
+        allPersons.add(Stephanie);
+        allPersons.add(William);
+        allPersons.add(Ashley);
+        allPersons.add(Susan);
+        allPersons.add(Roger);
+        allPersons.add(Sarah);
+        allPersons.add(Jesse);
+        allPersons.add(Bruce);
+        allPersons.add(Nancy);
+        allPersons.add(Austin);
+        allPersons.add(Carol);
     }
 }
