@@ -50,19 +50,72 @@ public class PhoneTest {
         allPhones.add(carolPhone);
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Which area code are you looking for?\n");
-        int areaCodeNumber = input.nextInt();
 
-        int count = 0;
-        for (int i = 0; i < allPhones.size(); i++) {
-            if (allPhones.get(i).getAreaCode() == areaCodeNumber) {
-                System.out.println("\n" + i + ": ");
-                System.out.println(allPhones.get(i));
-                count++;
-            }
+        System.out.println("\nMenu:");
+        System.out.println("1: Add Phone Number" + "\n2: Remove Phone Number" + "\n3: Update Phone Number" + "\n4: Search and Display Phone Number");
+        int menu = input.nextInt();
+
+        switch (menu) {
+            case 1:
+                System.out.println("Please add a country code: ");
+                int countryCode = input.nextInt();
+                System.out.println("Please add an area code: ");
+                int areaCode = input.nextInt();
+                System.out.println("Please add a phone prefix: ");
+                int phonePrefix = input.nextInt();
+                System.out.println("Please add a line number: ");
+                int lineNumber = input.nextInt();
+
+                Phone newPhoneNumber = new Phone(countryCode, areaCode, phonePrefix, lineNumber);
+                allPhones.add(newPhoneNumber);
+                break;
+            case 2:
+                System.out.println("Which area code are you looking for?\n");
+                int areaCodeNumber = input.nextInt();
+                for (int i = 0; i < allPhones.size(); i++) {
+                    if (allPhones.get(i).getAreaCode() == areaCodeNumber) {
+                        System.out.println("\n" + i + ": ");
+                        System.out.println(allPhones.get(i));
+                    }
+                }
+                System.out.println("Please select the Phone number index you wish to remove?\n");
+                int phoneIndex = input.nextInt();
+                allPhones.remove(phoneIndex);
+                System.out.println("Done!");
+                break;
+            case 3:
+                System.out.println("Which area code are you looking for ?\n");
+                int areaCode1 = input.nextInt();
+                for (int i = 0; i < allPhones.size(); i++) {
+                    if (allPhones.get(i).getAreaCode() == areaCode1) {
+                        System.out.print("\n" + i + ": ");
+                        System.out.println(allPhones.get(i));
+                    }
+                }
+                System.out.println("Please select the Phone number index you wish to update?\n");
+                int phoneIndex1 = input.nextInt();
+                System.out.println("Please enter a new are code: ");
+                int newAreaCode = input.nextInt();
+                allPhones.get(phoneIndex1).setAreaCode(newAreaCode);
+                System.out.println("Done!");
+                System.out.println("New phone number:\n");
+                System.out.print(phoneIndex1 + ": ");
+                System.out.println(allPhones.get(phoneIndex1));
+                break;
+            case 4:
+                System.out.println("Which area code are you looking for?\n");
+                int areaCodeNumber1 = input.nextInt();
+                int count = 0;
+                for (int i = 0; i < allPhones.size(); i++) {
+                    if (allPhones.get(i).getAreaCode() == areaCodeNumber1) {
+                        System.out.println("\n" + i + ": ");
+                        System.out.println(allPhones.get(i));
+                        count++;
+                    }
+                }
+                System.out.println("\nThere are " + count + " phone numbers with " + areaCodeNumber1 + " area code.");
+                break;
         }
-        System.out.println("\nThere are " + count + " phone numbers with " + areaCodeNumber + " area code.");
     }
-
 }
 

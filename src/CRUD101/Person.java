@@ -7,6 +7,8 @@ public class Person {
     private Address address;
     private Phone phoneNumber;
 
+    private ArrayList<Person> kids = new ArrayList<>();
+
     public Person(){
     }
 
@@ -51,8 +53,16 @@ public class Person {
         this.address = address;
     }
 
+    public ArrayList<Person> getKids() {
+        return this.kids;
+    }
+
+    public void setKids(Person kid) {
+        this.kids.add(kid);
+    }
+
     @Override
     public String toString() {
-        return name;
+        return name + "\n" + address + "\n" + phoneNumber;
     }
 }

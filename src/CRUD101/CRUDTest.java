@@ -98,8 +98,8 @@ public class CRUDTest {
 
         Phone paulPhone = new Phone(1, 514, 546, 9876);
         Phone emmaPhone = new Phone(1, 514, 278, 2389);
-        Phone peterPhone = new Phone(1, 212, 880, 7654);
-        Phone lisaPhone = new Phone(1, 514, 123, 1089);
+        Phone peterPhone = new Phone(1, 514, 880, 7654);
+        Phone lisaPhone = new Phone(1, 212, 123, 1089);
         Phone jamesPhone = new Phone(1, 438, 947, 8181);
         Phone robertPhone = new Phone(1, 514, 234, 9000);
         Phone maryPhone = new Phone(1, 438, 312, 9338);
@@ -139,8 +139,6 @@ public class CRUDTest {
         allPhones.add(nancyPhone);
         allPhones.add(austinPhone);
         allPhones.add(carolPhone);
-
-
 
         for (int j = 0; j < allPersons.size(); j++) {
             allPersons.get(j).setPhoneNumber(allPhones.get(j));
