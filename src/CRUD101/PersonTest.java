@@ -165,7 +165,50 @@ public class PersonTest {
                 System.out.println(allPersons.get(phoneIndex1).getPhoneNumber());
                 break;
             case 4:
-                System.out.println();
+                System.out.println("Which street name are you looking for?\n");
+                String nameOfTheStreet = input.next();
+                for (int i = 0; i < allPersons.size(); i++) {
+                    if (allPersons.get(i).getAddress().getStreetName().equals(nameOfTheStreet)) {
+                        System.out.print("\n" + i + ": ");
+                        System.out.println(allPersons.get(i).getAddress());
+                    }
+                }
+                System.out.println("Please select the address number you wish to update?\n");
+                int number = input.nextInt();
+                System.out.println("Please enter a new street name: ");
+                String newStreetName = input.next();
+                allPersons.get(number).getAddress().setStreetName(newStreetName);
+                System.out.println("Done!");
+                System.out.println("New address:\n");
+                System.out.print(number + ": ");
+                System.out.println(allPersons.get(number).getAddress());
+                break;
+            case 5:
+                System.out.println("Which area code are you looking for?\n");
+                int areaCodeNumber1 = input.nextInt();
+                int counter = 0;
+                for (int i = 0; i < allPersons.size(); i++) {
+                    if (allPersons.get(i).getPhoneNumber().getAreaCode() == areaCodeNumber1) {
+                        System.out.println("\n" + i + ": ");
+                        System.out.println(allPersons.get(i).getPhoneNumber());
+                        counter++;
+                    }
+                }
+                System.out.println("\nThere are " + counter + " phone numbers with " + areaCodeNumber1 + " area code.");
+                break;
+            case 6:
+                System.out.println("Which street name are you looking for?\n");
+                String street1 = input.next();
+                int count1 = 0;
+                for (int i = 0; i < allPersons.size(); i++) {
+                    if (allPersons.get(i).getAddress().getStreetName().equals(street1)) {
+                        System.out.print("\n" + i + ": ");
+                        System.out.println(allPersons.get(i).getAddress());
+                        count1++;
+                    }
+                }
+                System.out.println("\nThere are " + count1 + " addresses include " + street1 + ".");
+                break;
         }
     }
 }
