@@ -8,6 +8,12 @@ public class PersonTest {
 
         Scanner input = new Scanner(System.in);
 
+        ArrayList<Person> allPersons = creatingPersonObjects();
+
+        menu(input, allPersons);
+    }
+
+    private static ArrayList<Person> creatingPersonObjects() {
         Person Paul = new Person("Paul");
         Person Emma = new Person("Emma");
         Person Peter = new Person("Peter");
@@ -34,96 +40,148 @@ public class PersonTest {
         settingAddresses(Paul, Emma, Peter, Lisa, James, Robert, Mary, Kevin, Michelle, Stephanie, William, Ashley, Susan, Roger, Sarah, Jesse, Bruce, Nancy, Austin, Carol);
         settingPhoneNumbers(Paul, Emma, Peter, Lisa, James, Robert, Mary, Kevin, Michelle, Stephanie, William, Ashley, Susan, Roger, Sarah, Jesse, Bruce, Nancy, Austin, Carol);
         addingPersonsToTheArrayList(Paul, Emma, Peter, Lisa, James, Robert, Mary, Kevin, Michelle, Stephanie, William, Ashley, Susan, Roger, Sarah, Jesse, Bruce, Nancy, Austin, Carol, allPersons);
+        return allPersons;
+    }
 
-        System.out.println("\nMenu:");
-        System.out.println("1: Add a person" + "\n2: Remove a person" + "\n3: Update Phone Number" + "\n4: Update Address" + "\n5: Search and Display Phone Number" + "\n6: Search and Display Address");
-        int menu = input.nextInt();
+    private static void menu(Scanner input, ArrayList<Person> allPersons) {
+        int menu = showingMenu(input);
 
         switch (menu) {
             case 1:
-                System.out.println("Please add a person: ");
-                String newPerson = input.next();
-                Person person = new Person(newPerson);
-                System.out.println("Please add a country code: ");
-                int countryCode = input.nextInt();
-                System.out.println("Please add an area code: ");
-                int areaCode = input.nextInt();
-                System.out.println("Please add a phone prefix: ");
-                int phonePrefix = input.nextInt();
-                System.out.println("Please add a line number: ");
-                int lineNumber = input.nextInt();
-                person.setPhoneNumber(countryCode, areaCode, phonePrefix, lineNumber);
-
-                System.out.println("Please add a street number: ");
-                int streetNumber = input.nextInt();
-                System.out.println("Please add a street name: ");
-                String streetName = input.next();
-                System.out.println("Please add a building Type: ");
-                String buildingType = input.next();
-                System.out.println("Please add an apartment number ");
-                int apartmentNumber = input.nextInt();
-                System.out.println("Please add a city name: ");
-                String cityName = input.next();
-                System.out.println("Please add a state name: ");
-                String stateName = input.next();
-                System.out.println("Please add a country name: ");
-                String countryName = input.next();
-                System.out.println("Please add a zip code: ");
-                String zipCode = input.next();
-                person.setAddress(streetNumber, streetName, buildingType, apartmentNumber, cityName, stateName, countryName, zipCode);
-                allPersons.add(person);
+                addingPerson(input, allPersons);
                 break;
             case 2:
-                System.out.println("Please enter the name of the person you wish to remove: \n");
-                String personName = input.next();
-                removePerson(allPersons, personName);
-                System.out.println("Done!");
+                removingPerson(input, allPersons);
                 break;
             case 3:
-                System.out.println("Which area code are you looking for ?\n");
-                int areaCode1 = input.nextInt();
-                searchAreaCode(allPersons, areaCode1);
-                System.out.println("Please select the Phone number index you wish to update?\n");
-                int phoneIndex1 = input.nextInt();
-                System.out.println("Please enter a new are code: ");
-                int newAreaCode = input.nextInt();
-                allPersons.get(phoneIndex1).getPhoneNumber().setAreaCode(newAreaCode);
-
-                System.out.println("Done!");
-                System.out.println("New phone number:\n");
-                System.out.print(phoneIndex1 + ": ");
-                System.out.println(allPersons.get(phoneIndex1).getPhoneNumber());
+                updatingPhoneNumber(input, allPersons);
                 break;
             case 4:
-                System.out.println("Which street name are you looking for?\n");
-                String nameOfTheStreet = input.next();
-                searchStreetName(allPersons, nameOfTheStreet);
-                System.out.println("Please select the address number you wish to update?\n");
-                int number = input.nextInt();
-                System.out.println("Please enter a new street name: ");
-                String newStreetName = input.next();
-                allPersons.get(number).getAddress().setStreetName(newStreetName);
-                System.out.println("Done!");
-                System.out.println("New address:\n");
-                System.out.print(number + ": ");
-                System.out.println(allPersons.get(number).getAddress());
+                updatingAddresses(input, allPersons);
                 break;
             case 5:
-                System.out.println("Which area code are you looking for?\n");
-                int areaCodeNumber1 = input.nextInt();
-                int counter = countingPhoneNumbers(allPersons, areaCodeNumber1);
-                System.out.println("\nThere are " + counter + " phone numbers with " + areaCodeNumber1 + " area code.");
+                searchingPhoneNumbers(input, allPersons);
                 break;
             case 6:
-                System.out.println("Which street name are you looking for?\n");
-                String street1 = input.next();
-                int count1 = countingAddresses(allPersons, street1);
-                System.out.println("\nThere are " + count1 + " addresses include " + street1 + ".");
+                searchingAddresses(input, allPersons);
                 break;
         }
     }
 
-    private static int countingAddresses(ArrayList<Person> allPersons, String street1) {
+
+    private static int showingMenu(Scanner input) {
+        System.out.println("\nMenu:");
+        System.out.println("1: Add a person" + "\n2: Remove a person" + "\n3: Update Phone Number" + "\n4: Update Address" + "\n5: Search and Display Phone Number" + "\n6: Search and Display Address");
+        int menu = input.nextInt();
+        return menu;
+    }
+
+    private static void searchingAddresses(Scanner input, ArrayList<Person> allPersons) {
+        System.out.println("Which street name are you looking for?\n");
+        String street1 = input.next();
+        int count1 = findAndCountAddressesWithTheSameStreetName(allPersons, street1);
+        System.out.println("\nThere are " + count1 + " addresses include " + street1 + ".");
+    }
+
+    private static void searchingPhoneNumbers(Scanner input, ArrayList<Person> allPersons) {
+        System.out.println("Which area code are you looking for?\n");
+        int areaCodeNumber1 = input.nextInt();
+        int counter = findAndCountPhoneNumbersWithTheSameAreaCode(allPersons, areaCodeNumber1);
+        System.out.println("\nThere are " + counter + " phone numbers with " + areaCodeNumber1 + " area code.");
+    }
+
+    private static void updatingAddresses(Scanner input, ArrayList<Person> allPersons) {
+        System.out.println("Which street name are you looking for?\n");
+        String nameOfTheStreet = input.next();
+        searchStreetName(allPersons, nameOfTheStreet);
+        System.out.println("Please select the address number you wish to update?\n");
+        int number = input.nextInt();
+        System.out.println("Please enter a new street name: ");
+        String newStreetName = input.next();
+        updatingStreetName(allPersons, number, newStreetName);
+    }
+
+    private static void updatingStreetName(ArrayList<Person> allPersons, int number, String newStreetName) {
+        allPersons.get(number).getAddress().setStreetName(newStreetName);
+        System.out.println("Done!");
+        System.out.println("New address:\n");
+        System.out.print(number + ": ");
+        System.out.println(allPersons.get(number).getAddress());
+    }
+
+    private static void updatingPhoneNumber(Scanner input, ArrayList<Person> allPersons) {
+        System.out.println("Which area code are you looking for ?\n");
+        int areaCode1 = input.nextInt();
+        searchAreaCode(allPersons, areaCode1);
+        System.out.println("Please select the Phone number index you wish to update?\n");
+        int phoneIndex1 = input.nextInt();
+        System.out.println("Please enter a new are code: ");
+        int newAreaCode = input.nextInt();
+        updatingAreaCode(allPersons, phoneIndex1, newAreaCode);
+    }
+
+    private static void updatingAreaCode(ArrayList<Person> allPersons, int phoneIndex1, int newAreaCode) {
+        allPersons.get(phoneIndex1).getPhoneNumber().setAreaCode(newAreaCode);
+        System.out.println("Done!");
+        System.out.println("New phone number:\n");
+        System.out.print(phoneIndex1 + ": ");
+        System.out.println(allPersons.get(phoneIndex1).getPhoneNumber());
+    }
+
+    private static void removingPerson(Scanner input, ArrayList<Person> allPersons) {
+        System.out.println("Please enter the name of the person you wish to remove: \n");
+        String personName = input.next();
+        removePerson(allPersons, personName);
+        System.out.println("Done!");
+    }
+
+    private static void addingPerson(Scanner input, ArrayList<Person> allPersons) {
+        Person person = addingNewPerson(input);
+        settingPhoneNumberOfTheNewPerson(input, person);
+        settingAddressOfTheNewPerson(input, person);
+        allPersons.add(person);
+    }
+
+    private static void settingAddressOfTheNewPerson(Scanner input, Person person) {
+        System.out.println("Please add a street number: ");
+        int streetNumber = input.nextInt();
+        System.out.println("Please add a street name: ");
+        String streetName = input.next();
+        System.out.println("Please add a building Type: ");
+        String buildingType = input.next();
+        System.out.println("Please add an apartment number ");
+        int apartmentNumber = input.nextInt();
+        System.out.println("Please add a city name: ");
+        String cityName = input.next();
+        System.out.println("Please add a state name: ");
+        String stateName = input.next();
+        System.out.println("Please add a country name: ");
+        String countryName = input.next();
+        System.out.println("Please add a zip code: ");
+        String zipCode = input.next();
+        person.setAddress(streetNumber, streetName, buildingType, apartmentNumber, cityName, stateName, countryName, zipCode);
+    }
+
+    private static void settingPhoneNumberOfTheNewPerson(Scanner input, Person person) {
+        System.out.println("Please add a country code: ");
+        int countryCode = input.nextInt();
+        System.out.println("Please add an area code: ");
+        int areaCode = input.nextInt();
+        System.out.println("Please add a phone prefix: ");
+        int phonePrefix = input.nextInt();
+        System.out.println("Please add a line number: ");
+        int lineNumber = input.nextInt();
+        person.setPhoneNumber(countryCode, areaCode, phonePrefix, lineNumber);
+    }
+
+    private static Person addingNewPerson(Scanner input) {
+        System.out.println("Please add a person: ");
+        String newPerson = input.next();
+        Person personNew = new Person(newPerson);
+        return personNew;
+    }
+
+    private static int findAndCountAddressesWithTheSameStreetName(ArrayList<Person> allPersons, String street1) {
         int count1 = 0;
         for (int i = 0; i < allPersons.size(); i++) {
             if (allPersons.get(i).getAddress().getStreetName().equals(street1)) {
@@ -135,7 +193,7 @@ public class PersonTest {
         return count1;
     }
 
-    private static int countingPhoneNumbers(ArrayList<Person> allPersons, int areaCodeNumber1) {
+    private static int findAndCountPhoneNumbersWithTheSameAreaCode(ArrayList<Person> allPersons, int areaCodeNumber1) {
         int counter = 0;
         for (int i = 0; i < allPersons.size(); i++) {
             if (allPersons.get(i).getPhoneNumber().getAreaCode() == areaCodeNumber1) {
@@ -159,7 +217,7 @@ public class PersonTest {
     private static void searchAreaCode(ArrayList<Person> allPersons, int areaCode1) {
         for (int i = 0; i < allPersons.size(); i++) {
             if (allPersons.get(i).getPhoneNumber().getAreaCode() == areaCode1) {
-                System.out.print("\n" + i + ": ");
+                System.out.print("\n" + i + ": " + allPersons.get(i).getName() + " - ");
                 System.out.println(allPersons.get(i).getPhoneNumber());
             }
         }
@@ -169,7 +227,7 @@ public class PersonTest {
         for (int i = 0; i < allPersons.size(); i++) {
             if (allPersons.get(i).getName().equals(personName)) {
                 allPersons.remove(i);
-                System.out.println(personName + "is replaced by " + allPersons.get(i).getName());
+                System.out.println(personName + " is replaced by " + allPersons.get(i).getName());
             }
         }
     }
@@ -242,6 +300,5 @@ public class PersonTest {
         Austin.setAddress(467, "Saint-Antoine", "Apartment", 78, "Montreal", "QC", "CANADA", "H3B 1X9");
         Carol.setAddress(456, "Sherbrooke", "Apartment", 23, "Montreal", "QC", "CANADA", "H3A 3G4");
     }
-
 }
 
